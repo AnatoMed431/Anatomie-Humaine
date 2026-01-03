@@ -4,38 +4,114 @@
   <meta charset="UTF-8">
   <title>L'anatomie Humaine</title>
   <style>
+    /* ======================= */
+    /* STYLE GLOBAL DU SITE */
+    /* ======================= */
     body {
       background-color: #f0f8ff; /* fond bleu clair */
-      font-family: Arial, sans-serif; /* police agréable */
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      line-height: 1.6; /* espacement entre lignes */
+      line-height: 1.6;
     }
+
     h1 {
       text-align: center;
       color: #d62828; /* rouge doux */
       font-size: 48px;
       margin-top: 40px;
     }
+
     h2 {
       text-align: center;
       color: #003566; /* bleu foncé */
       font-size: 32px;
       margin-top: 30px;
     }
+
     p {
       font-size: 18px;
-      text-align: center;
+      text-align: center; /* CENTRAGE PARFAIT */
       margin: 20px auto;
       max-width: 800px; /* largeur max pour lecture confortable */
     }
+
     i {
       color: #d62828; /* italique coloré */
+    }
+
+    /* ======================= */
+    /* MENU HAMBURGER */
+    /* ======================= */
+    .menu-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1001;
+      color: #003566;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003566;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 22px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .side-menu a:hover {
+      background-color: #00509e;
+    }
+
+    .side-menu .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
+  <!-- BOUTON HAMBURGER -->
+  <span class="menu-button" onclick="openMenu()">&#9776;</span>
+
+  <!-- MENU LATÉRAL -->
+  <div id="myMenu" class="side-menu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="#">Accueil</a>
+    <a href="squelette.html">Le système squelétique</a>
+    <a href="muscles.html">Le système musculaire</a>
+    <a href="nerf.html">Le système nerveux</a>
+    <a href="circulation.html">Le système circulatioire/cardiovasculaire</a>
+    <a href="respiration.html">Le système respiratoire</a>
+    <a href="digestion.html">Le système digestif</a>
+    <a href="urinaire.html">Le système urinaire/excréteur</a>
+    <a href="endocranien.html">Le système endocranien</a>
+    <a href="reproduction.html">Le système reproducteur</a>
+    <a href="immunitaire.html">Le système lymphatique/immunitaire</a>
+    <a href="tégumentaire.html">Le système tégumentaire</a>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
   <h1>L'anatomie Humaine</h1>
 
   <p>
@@ -44,10 +120,32 @@
     Les cours présents sur ce site seront améliorés avec le temps et de nouveaux cours sortiront de temps à autre.
   </p>
 
+  <h2>Nos objectifs</h2>
+  <p>
+    Fournir des cours clairs et accessibles pour comprendre le fonctionnement du corps humain. 
+    Chaque section est expliquée avec des illustrations simples pour faciliter l'apprentissage.
+  </p>
+
+  <h2>Pour qui ?</h2>
+  <p>
+    Ce site s'adresse aux passionnés de médecine, futurs étudiants, ou simplement aux curieux qui veulent découvrir le corps humain de manière simple et ludique.
+  </p>
+
   <h2>À noter</h2>
   <p>
     Le contenu est éducatif et ne remplace pas un avis médical professionnel. Vérifiez toujours vos sources pour des informations précises et à jour.
   </p>
+
+  <!-- SCRIPT POUR LE MENU HAMBURGER -->
+  <script>
+    function openMenu() {
+      document.getElementById("myMenu").style.width = "250px";
+    }
+
+    function closeMenu() {
+      document.getElementById("myMenu").style.width = "0";
+    }
+  </script>
 
 </body>
 </html>
