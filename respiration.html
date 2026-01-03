@@ -4,43 +4,114 @@
   <meta charset="UTF-8">
   <title>Le système respiratoire</title>
   <style>
+    /* ======================= */
+    /* STYLE GLOBAL DU SITE */
+    /* ======================= */
     body {
-      background-color: #f0f8ff; /* fond bleu clair */
-      font-family: Arial, sans-serif; /* police agréable */
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      line-height: 1.6; /* espacement entre lignes */
+      line-height: 1.6;
     }
+
     h1 {
       text-align: center;
-      color: #d62828; /* rouge doux */
+      color: #d62828;
       font-size: 48px;
       margin-top: 40px;
     }
-    h2 {
-      text-align: center;
-      color: #003566; /* bleu foncé */
-      font-size: 32px;
-      margin-top: 30px;
-    }
+
     p {
       font-size: 18px;
       text-align: center;
       margin: 20px auto;
-      max-width: 800px; /* largeur max pour lecture confortable */
+      max-width: 800px;
     }
-    i {
-      color: #d62828; /* italique coloré */
+
+    .menu-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1001;
+      color: #003566;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003566;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 22px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .side-menu a:hover {
+      background-color: #00509e;
+    }
+
+    .side-menu .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <h1>Le système respiratoire</h1>
+  <!-- BOUTON HAMBURGER -->
+  <span class="menu-button" onclick="openMenu()">&#9776;</span>
 
+  <!-- MENU LATÉRAL -->
+  <div id="myMenu" class="side-menu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="index.html">Accueil</a>
+    <a href="squelette.html">Le système squelettique</a>
+    <a href="musculaire.html">Le système musculaire</a>
+    <a href="nerveux.html">Le système nerveux</a>
+    <a href="circulatoire.html">Le système circulatoire / cardiovasculaire</a>
+    <a href="respiratoire.html">Le système respiratoire</a>
+    <a href="digestif.html">Le système digestif</a>
+    <a href="urinaire.html">Le système urinaire / excréteur</a>
+    <a href="endocrinien.html">Le système endocrinien</a>
+    <a href="reproducteur.html">Le système reproducteur</a>
+    <a href="immunitaire.html">Le système lymphatique / immunitaire</a>
+    <a href="tegumentaire.html">Le système tégumentaire</a>
+  </div>
+
+  <!-- CONTENU DE LA PAGE -->
+  <h1>Le système respiratoire</h1>
   <p>
     Désolé, le cours n’a pas encore été créé. Revenez dans quelques jours pour découvrir votre nouveau cours.
   </p>
+
+  <!-- SCRIPT POUR LE MENU HAMBURGER -->
+  <script>
+    function openMenu() {
+      document.getElementById("myMenu").style.width = "250px";
+    }
+    function closeMenu() {
+      document.getElementById("myMenu").style.width = "0";
+    }
+  </script>
 
 </body>
 </html>
