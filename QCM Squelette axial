@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Le système osseux</title>
+  <style>
+    /* ======================= */
+    /* STYLE GLOBAL DU SITE */
+    /* ======================= */
+    body {
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
 
+  i {
+    color: #d62828; /* italique coloré */
+    }
+
+    h1 {
+      text-align: center;
+      color: #d62828;
+      font-size: 48px;
+      margin-top: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #003566; /* bleu foncé */
+      font-size: 32px;
+      margin-top: 30px;
+    }
+
+    h3 {
+      text-align: center;
+      color: #1B5E20; /* vert foncé */
+      font-size: 27px;
+      margin-top: 30px;
+    }
+    
+    h4 {
+      text-align: center;
+      color: #000000;
+      font-size: 23px;
+      margin-top: 22px;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: center;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .menu-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1001;
+      color: #003566;
+    }
+
+    .side-menu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #003566;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      padding: 10px 30px;
+      text-decoration: none;
+      font-size: 22px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .side-menu a:hover {
+      background-color: #00509e;
+    }
+
+    .side-menu .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BOUTON HAMBURGER -->
+  <span class="menu-button" onclick="openMenu()">&#9776;</span>
+
+  <!-- MENU LATÉRAL -->
+  <div id="myMenu" class="side-menu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="index.html">Accueil</a>
+    <a href="squelette.html">Le système squelettique</a>
+    <a href="musculaire.html">Le système musculaire</a>
+    <a href="nerveux.html">Le système nerveux</a>
+    <a href="circulatoire.html">Le système circulatoire / cardiovasculaire</a>
+    <a href="respiratoire.html">Le système respiratoire</a>
+    <a href="digestif.html">Le système digestif</a>
+    <a href="urinaire.html">Le système urinaire / excréteur</a>
+    <a href="endocrinien.html">Le système endocrinien</a>
+    <a href="reproducteur.html">Le système reproducteur</a>
+    <a href="imunitaire.html">Le système lymphatique / immunitaire</a>
+    <a href="tegumentaire.html">Le système tégumentaire</a>
+  </div>
+
+  <!-- CONTENU DE LA PAGE -->
+<h1>QCM sur le squelette axial</h1>
