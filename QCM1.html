@@ -1,126 +1,953 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>QCM sur le squelette axial</title>
-  <style>
-    /* ======================= */
-    /* STYLE GLOBAL DU SITE */
-    /* ======================= */
-    body {
-      background-color: #f0f8ff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-  i {
-    color: #d62828; /* italique coloré */
-    }
-
-    h1 {
-      text-align: center;
-      color: #d62828;
-      font-size: 48px;
-      margin-top: 40px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #003566; /* bleu foncé */
-      font-size: 32px;
-      margin-top: 30px;
-    }
-
-    h3 {
-      text-align: center;
-      color: #1B5E20; /* vert foncé */
-      font-size: 27px;
-      margin-top: 30px;
-    }
-    
-    h4 {
-      text-align: center;
-      color: #000000;
-      font-size: 23px;
-      margin-top: 22px;
-    }
-
-    p {
-      font-size: 18px;
-      text-align: center;
-      margin: 20px auto;
-      max-width: 800px;
-    }
-
-    .menu-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      font-size: 30px;
-      cursor: pointer;
-      z-index: 1001;
-      color: #003566;
-    }
-
-    .side-menu {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #003566;
-      overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 60px;
-      z-index: 1000;
-    }
-
-    .side-menu a {
-      padding: 10px 30px;
-      text-decoration: none;
-      font-size: 22px;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .side-menu a:hover {
-      background-color: #00509e;
-    }
-
-    .side-menu .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 36px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>QCM – Squelette axial</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  text-align: center;
+  padding: 20px;
+}
+h1 { color: #d62828; }
+h3 { color: #003566; }
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 20px auto;
+}
+button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+p { font-weight: bold; }
+#scoreFinal { font-size: 20px; margin-bottom: 20px; }
+</style>
 </head>
 <body>
 
-  <!-- BOUTON HAMBURGER -->
-  <span class="menu-button" onclick="openMenu()">&#9776;</span>
+<h1>QCM – Le squelette axial</h1>
+<p id="scoreFinal">Score : 0 / 30</p>
 
-  <!-- MENU LATÉRAL -->
-  <div id="myMenu" class="side-menu">
-    <span class="close-btn" onclick="closeMenu()">&times;</span>
-    <a href="index.html">Accueil</a>
-    <a href="squelette.html">Le système squelettique</a>
-    <a href="musculaire.html">Le système musculaire</a>
-    <a href="nerveux.html">Le système nerveux</a>
-    <a href="circulatoire.html">Le système circulatoire / cardiovasculaire</a>
-    <a href="respiratoire.html">Le système respiratoire</a>
-    <a href="digestif.html">Le système digestif</a>
-    <a href="urinaire.html">Le système urinaire / excréteur</a>
-    <a href="endocrinien.html">Le système endocrinien</a>
-    <a href="reproducteur.html">Le système reproducteur</a>
-    <a href="imunitaire.html">Le système lymphatique / immunitaire</a>
-    <a href="tegumentaire.html">Le système tégumentaire</a>
-  </div>
+<script>
+let score = 0;
+function ajouterScore() {
+  score++;
+  document.getElementById("scoreFinal").textContent = "Score : " + score + " / 30";
+}
+</script>
 
-  <!-- CONTENU DE LA PAGE -->
-<h1>QCM sur le squelette axial</h1>
+<!-- ================= QUESTIONS 1 à 8 ================= -->
+<h3>1. Qu'est-ce que le système locomoteur ?</h3>
+<form id="q1">
+  <input type="radio" id="q1a" name="q1" value="a"><label for="q1a">Le bas du squelette</label><br>
+  <input type="radio" id="q1b" name="q1" value="b"><label for="q1b">Un ensemble de composants permettant le mouvement</label><br>
+  <input type="radio" id="q1c" name="q1" value="c"><label for="q1c">La partie qui relie les vertèbres entre elles</label><br>
+  <button type="button" onclick="verifierQ1()">Valider</button>
+</form>
+<p id="resultat1"></p>
+<script>
+function verifierQ1(){
+  const r=document.querySelector('input[name="q1"]:checked');
+  const res=document.getElementById("resultat1");
+  if(!r){ res.textContent="Veuillez choisir une réponse."; return; }
+  if(r.value==="b"){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q1"]').forEach(i=>i.disabled=true);
+  document.querySelector('#q1 button').disabled=true;
+}
+</script>
+
+<h3>2. En combien de parties le squelette est-il divisé ?</h3>
+<form id="q2">
+  <input type="radio" id="q2a" name="q2" value="a"><label for="q2a">0</label><br>
+  <input type="radio" id="q2b" name="q2" value="b"><label for="q2b">2</label><br>
+  <input type="radio" id="q2c" name="q2" value="c"><label for="q2c">3</label><br>
+  <button type="button" onclick="verifierQ2()">Valider</button>
+</form>
+<p id="resultat2"></p>
+<script>
+function verifierQ2(){
+  const r=document.querySelector('input[name="q2"]:checked');
+  const res=document.getElementById("resultat2");
+  if(!r){ res.textContent="Veuillez choisir une réponse."; return; }
+  if(r.value==="b"){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q2"]').forEach(i=>i.disabled=true);
+  document.querySelector('#q2 button').disabled=true;
+}
+</script>
+
+<h3>3. Comment s'appellent ces deux parties ? (cocher 2)</h3>
+<form id="q3">
+  <input type="checkbox" id="q3a" name="q3" value="axial"><label for="q3a">Le squelette axial</label><br>
+  <input type="checkbox" id="q3b" name="q3" value="appendiculaire"><label for="q3b">Le squelette appendiculaire</label><br>
+  <input type="checkbox" id="q3c" name="q3" value="perpendiculaire"><label for="q3c">Le squelette perpendiculaire</label><br>
+  <input type="checkbox" id="q3d" name="q3" value="facial"><label for="q3d">Le squelette facial</label><br>
+  <button type="button" onclick="verifierQ3()">Valider</button>
+</form>
+<p id="resultat3"></p>
+<script>
+function verifierQ3(){
+  const coches=document.querySelectorAll('input[name="q3"]:checked');
+  const valeurs=Array.from(coches).map(c=>c.value);
+  const bonnes=["axial","appendiculaire"];
+  const correct=valeurs.length===bonnes.length && bonnes.every(v=>valeurs.includes(v));
+  const res=document.getElementById("resultat3");
+  if(correct){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q3"]').forEach(c=>c.disabled=true);
+  document.querySelector('#q3 button').disabled=true;
+}
+</script>
+
+<h3>4. Combien d'os un adulte possède au total ?</h3>
+<form id="q4">
+  <input type="radio" id="q4a" name="q4" value="a"><label for="q4a">126</label><br>
+  <input type="radio" id="q4b" name="q4" value="b"><label for="q4b">234</label><br>
+  <input type="radio" id="q4c" name="q4" value="c"><label for="q4c">206</label><br>
+  <button type="button" onclick="verifierQ4()">Valider</button>
+</form>
+<p id="resultat4"></p>
+<script>
+function verifierQ4(){
+  const r=document.querySelector('input[name="q4"]:checked');
+  const res=document.getElementById("resultat4");
+  if(!r){ res.textContent="Veuillez choisir une réponse."; return; }
+  if(r.value==="c"){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q4"]').forEach(i=>i.disabled=true);
+  document.querySelector('#q4 button').disabled=true;
+}
+</script>
+
+<h3>5. Combien d'os dans le squelette axial d’un adulte ?</h3>
+<form id="q5">
+  <input type="radio" id="q5a" name="q5" value="a"><label for="q5a">80</label><br>
+  <input type="radio" id="q5b" name="q5" value="b"><label for="q5b">126</label><br>
+  <input type="radio" id="q5c" name="q5" value="c"><label for="q5c">78</label><br>
+  <button type="button" onclick="verifierQ5()">Valider</button>
+</form>
+<p id="resultat5"></p>
+<script>
+function verifierQ5(){
+  const r=document.querySelector('input[name="q5"]:checked');
+  const res=document.getElementById("resultat5");
+  if(!r){ res.textContent="Veuillez choisir une réponse."; return; }
+  if(r.value==="a"){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q5"]').forEach(i=>i.disabled=true);
+  document.querySelector('#q5 button').disabled=true;
+}
+</script>
+
+<h3>6. Les os participent à la fabrication du sang ?</h3>
+<form id="q6">
+  <input type="radio" id="q6a" name="q6" value="a"><label for="q6a">Vrai</label><br>
+  <input type="radio" id="q6b" name="q6" value="b"><label for="q6b">Faux</label><br>
+  <button type="button" onclick="verifierQ6()">Valider</button>
+</form>
+<p id="resultat6"></p>
+<script>
+function verifierQ6(){
+  const r=document.querySelector('input[name="q6"]:checked');
+  const res=document.getElementById("resultat6");
+  if(!r){ res.textContent="Veuillez choisir une réponse."; return; }
+  if(r.value==="a"){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q6"]').forEach(i=>i.disabled=true);
+  document.querySelector('#q6 button').disabled=true;
+}
+</script>
+
+<h3>7. Le squelette axial se "fixe" sur le squelette appendiculaire ?</h3>
+<form id="q7">
+  <input type="radio" id="q7a" name="q7" value="a"><label for="q7a">Vrai</label><br>
+  <input type="radio" id="q7b" name="q7" value="b"><label for="q7b">Faux</label><br>
+  <button type="button" onclick="verifierQ7()">Valider</button>
+</form>
+<p id="resultat7"></p>
+<script>
+function verifierQ7(){
+  const r=document.querySelector('input[name="q7"]:checked');
+  const res=document.getElementById("resultat7");
+  if(!r){ res.textContent="Veuillez choisir une réponse."; return; }
+  if(r.value==="b"){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q7"]').forEach(i=>i.disabled=true);
+  document.querySelector('#q7 button').disabled=true;
+}
+</script>
+
+<h3>8. Cochez les éléments du squelette axial</h3>
+<form id="q8">
+  <input type="checkbox" id="q8a" name="q8" value="crâne"><label for="q8a">Crâne</label><br>
+  <input type="checkbox" id="q8b" name="q8" value="épaule"><label for="q8b">Épaules</label><br>
+  <input type="checkbox" id="q8c" name="q8" value="cage thoracique"><label for="q8c">Cage thoracique</label><br>
+  <input type="checkbox" id="q8d" name="q8" value="colonne vertébrale"><label for="q8d">Colonne vertébrale</label><br>
+  <input type="checkbox" id="q8e" name="q8" value="hyoide"><label for="q8e">Os hyoïde</label><br>
+  <input type="checkbox" id="q8f" name="q8" value="oreille moyenne"><label for="q8f">Os de l'oreille moyenne</label><br>
+  <button type="button" onclick="verifierQ8()">Valider</button>
+</form>
+<p id="resultat8"></p>
+<script>
+function verifierQ8(){
+  const coches=document.querySelectorAll('input[name="q8"]:checked');
+  const valeurs=Array.from(coches).map(c=>c.value);
+  const bonnes=["crâne","cage thoracique","colonne vertébrale","hyoide","oreille moyenne"];
+  const correct=bonnes.every(v=>valeurs.includes(v)) && valeurs.length===bonnes.length;
+  const res=document.getElementById("resultat8");
+  if(correct){ res.textContent="✅ Bonne réponse !"; ajouterScore(); }
+  else{ res.textContent="❌ Mauvaise réponse."; }
+  document.querySelectorAll('input[name="q8"]').forEach(c=>c.disabled=true);
+  document.querySelector('#q8 button').disabled=true;
+}
+</script>
+
+<!-- ================= QUESTION 9 ================= -->
+<h3>9. À quoi sert le neurocrâne ?</h3>
+<form id="q9">
+  <input type="radio" id="q9a" name="q9" value="a">
+  <label for="q9a">À protéger le cerveau</label><br>
+
+  <input type="radio" id="q9b" name="q9" value="b">
+  <label for="q9b">À protéger le cœur</label><br>
+
+  <input type="radio" id="q9c" name="q9" value="c">
+  <label for="q9c">À articuler les côtes</label><br>
+
+  <button type="button" onclick="verifierQ9()">Valider</button>
+</form>
+<p id="resultat9"></p>
+
+<script>
+function verifierQ9() {
+  const reponse = document.querySelector('input[name="q9"]:checked');
+  const resultat = document.getElementById("resultat9");
+
+  if (!reponse) {
+    resultat.textContent = "Veuillez choisir une réponse.";
+    return;
+  }
+
+  if (reponse.value === "a") {
+    resultat.textContent = "✅ Bonne réponse ! Le neurocrâne protège le cerveau.";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. La bonne réponse est : À protéger le cerveau.";
+  }
+
+  document.querySelectorAll('input[name="q9"]').forEach(r => r.disabled = true);
+  document.querySelector('#q9 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 10 ================= -->
+<h3>10. Cochez les os du neurocrâne</h3>
+<form id="q10">
+  <input type="checkbox" id="q10a" name="q10" value="frontal">
+  <label for="q10a">Frontal</label><br>
+
+  <input type="checkbox" id="q10b" name="q10" value="parietal">
+  <label for="q10b">Pariétal</label><br>
+
+  <input type="checkbox" id="q10c" name="q10" value="maxillaire">
+  <label for="q10c">Maxillaire</label><br>
+
+  <input type="checkbox" id="q10d" name="q10" value="temporal">
+  <label for="q10d">Temporal</label><br>
+
+  <button type="button" onclick="verifierQ10()">Valider</button>
+</form>
+<p id="resultat10"></p>
+
+<script>
+function verifierQ10() {
+  const coches = document.querySelectorAll('input[name="q10"]:checked');
+  const valeurs = Array.from(coches).map(c => c.value);
+  const bonnesReponses = ["frontal","parietal","temporal"];
+  const resultat = document.getElementById("resultat10");
+
+  const correct =
+    valeurs.length === bonnesReponses.length &&
+    bonnesReponses.every(v => valeurs.includes(v));
+
+  if (correct) {
+    resultat.textContent = "✅ Bonne réponse !";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. Les bons os du neurocrâne sont : frontal, pariétal, temporal.";
+  }
+
+  document.querySelectorAll('input[name="q10"]').forEach(c => c.disabled = true);
+  document.querySelector('#q10 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 11 ================= -->
+<h3>11. Cochez les os du viscérocrâne</h3>
+<form id="q11">
+  <input type="checkbox" id="q11a" name="q11" value="mandibule">
+  <label for="q11a">Mandibule</label><br>
+
+  <input type="checkbox" id="q11b" name="q11" value="zygomatique">
+  <label for="q11b">Zygomatique</label><br>
+
+  <input type="checkbox" id="q11c" name="q11" value="temporal">
+  <label for="q11c">Temporal</label><br>
+
+  <input type="checkbox" id="q11d" name="q11" value="maxillaire">
+  <label for="q11d">Maxillaire</label><br>
+
+  <button type="button" onclick="verifierQ11()">Valider</button>
+</form>
+<p id="resultat11"></p>
+
+<script>
+function verifierQ11() {
+  const coches = document.querySelectorAll('input[name="q11"]:checked');
+  const valeurs = Array.from(coches).map(c => c.value);
+  const bonnesReponses = ["mandibule","zygomatique","maxillaire"];
+  const resultat = document.getElementById("resultat11");
+
+  const correct =
+    valeurs.length === bonnesReponses.length &&
+    bonnesReponses.every(v => valeurs.includes(v));
+
+  if (correct) {
+    resultat.textContent = "✅ Bonne réponse !";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. Les bons os du viscérocrâne sont : mandibule, zygomatique, maxillaire.";
+  }
+
+  document.querySelectorAll('input[name="q11"]').forEach(c => c.disabled = true);
+  document.querySelector('#q11 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 12 ================= -->
+<h3>12. Cochez les os de l'oreille moyenne</h3>
+<form id="q12">
+  <input type="checkbox" id="q12a" name="q12" value="marteau">
+  <label for="q12a">Marteau</label><br>
+
+  <input type="checkbox" id="q12b" name="q12" value="enclume">
+  <label for="q12b">Enclume</label><br>
+
+  <input type="checkbox" id="q12c" name="q12" value="étrier">
+  <label for="q12c">Étrier</label><br>
+
+  <input type="checkbox" id="q12d" name="q12" value="incus">
+  <label for="q12d">Incus</label><br>
+
+  <button type="button" onclick="verifierQ12()">Valider</button>
+</form>
+<p id="resultat12"></p>
+
+<script>
+function verifierQ12() {
+  const coches = document.querySelectorAll('input[name="q12"]:checked');
+  const valeurs = Array.from(coches).map(c => c.value);
+  const bonnesReponses = ["marteau","enclume","étrier"];
+  const resultat = document.getElementById("resultat12");
+
+  const correct =
+    valeurs.length === bonnesReponses.length &&
+    bonnesReponses.every(v => valeurs.includes(v));
+
+  if (correct) {
+    resultat.textContent = "✅ Bonne réponse !";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. Les bons os sont : marteau, enclume, étrier.";
+  }
+
+  document.querySelectorAll('input[name="q12"]').forEach(c => c.disabled = true);
+  document.querySelector('#q12 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 13 ================= -->
+<h3>13. L’étrier est-il le plus petit os du corps humain ?</h3>
+<form id="q13">
+  <input type="radio" id="q13a" name="q13" value="a">
+  <label for="q13a">Vrai</label><br>
+
+  <input type="radio" id="q13b" name="q13" value="b">
+  <label for="q13b">Faux</label><br>
+
+  <button type="button" onclick="verifierQ13()">Valider</button>
+</form>
+<p id="resultat13"></p>
+
+<script>
+function verifierQ13() {
+  const reponse = document.querySelector('input[name="q13"]:checked');
+  const resultat = document.getElementById("resultat13");
+
+  if (!reponse) {
+    resultat.textContent = "Veuillez choisir une réponse.";
+    return;
+  }
+
+  if (reponse.value === "a") {
+    resultat.textContent = "✅ Bonne réponse ! L’étrier est le plus petit os du corps humain.";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. L’étrier est bien le plus petit os du corps humain.";
+  }
+
+  document.querySelectorAll('input[name="q13"]').forEach(r => r.disabled = true);
+  document.querySelector('#q13 button').disabled = true;
+}
+</script>
+<!-- ================= QUESTION 14 ================= -->
+<h3>14. Pourquoi l'os hyoïde est-il unique ?</h3>
+<form id="q14">
+  <input type="radio" id="q14a" name="q14" value="a">
+  <label for="q14a">Parce qu'il est le seul os qui ne s'articule avec aucun autre os</label><br>
+
+  <input type="radio" id="q14b" name="q14" value="b">
+  <label for="q14b">Parce qu'il est le plus grand os du cou</label><br>
+
+  <button type="button" onclick="verifierQ14()">Valider</button>
+</form>
+<p id="resultat14"></p>
+
+<script>
+function verifierQ14() {
+  const reponse = document.querySelector('input[name="q14"]:checked');
+  const resultat = document.getElementById("resultat14");
+
+  if (!reponse) {
+    resultat.textContent = "Veuillez choisir une réponse.";
+    return;
+  }
+
+  if (reponse.value === "a") {
+    resultat.textContent = "✅ Bonne réponse ! L'os hyoïde est le seul os qui ne s'articule avec aucun autre os.";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. La bonne réponse est : il ne s'articule avec aucun autre os.";
+  }
+
+  document.querySelectorAll('input[name="q14"]').forEach(r => r.disabled = true);
+  document.querySelector('#q14 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 15 ================= -->
+<h3>15. Que protège la colonne vertébrale ?</h3>
+<form id="q15">
+  <input type="radio" id="q15a" name="q15" value="a">
+  <label for="q15a">La moelle épinière</label><br>
+
+  <input type="radio" id="q15b" name="q15" value="b">
+  <label for="q15b">Le cœur</label><br>
+
+  <button type="button" onclick="verifierQ15()">Valider</button>
+</form>
+<p id="resultat15"></p>
+
+<script>
+function verifierQ15() {
+  const reponse = document.querySelector('input[name="q15"]:checked');
+  const resultat = document.getElementById("resultat15");
+
+  if (!reponse) {
+    resultat.textContent = "Veuillez choisir une réponse.";
+    return;
+  }
+
+  if (reponse.value === "a") {
+    resultat.textContent = "✅ Bonne réponse ! La colonne vertébrale protège la moelle épinière.";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. La bonne réponse est : la moelle épinière.";
+  }
+
+  document.querySelectorAll('input[name="q15"]').forEach(r => r.disabled = true);
+  document.querySelector('#q15 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 16 ================= -->
+<h3>16. Combien d’os composent la colonne vertébrale ?</h3>
+<form id="q16">
+  <input type="radio" id="q16a" name="q16" value="a">
+  <label for="q16a">33</label><br>
+
+  <input type="radio" id="q16b" name="q16" value="b">
+  <label for="q16b">26</label><br>
+
+  <button type="button" onclick="verifierQ16()">Valider</button>
+</form>
+<p id="resultat16"></p>
+
+<script>
+function verifierQ16() {
+  const reponse = document.querySelector('input[name="q16"]:checked');
+  const resultat = document.getElementById("resultat16");
+
+  if (!reponse) {
+    resultat.textContent = "Veuillez choisir une réponse.";
+    return;
+  }
+
+  if (reponse.value === "b") {
+    resultat.textContent = "✅ Bonne réponse ! Un adulte possède 26 os dans la colonne vertébrale.";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. La bonne réponse est : 26 os chez l'adulte.";
+  }
+
+  document.querySelectorAll('input[name="q16"]').forEach(r => r.disabled = true);
+  document.querySelector('#q16 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 17 ================= -->
+<h3>17. Combien de vertèbres cervicales ?</h3>
+<form id="q17">
+  <input type="radio" id="q17a" name="q17" value="a">
+  <label for="q17a">5</label><br>
+
+  <input type="radio" id="q17b" name="q17" value="b">
+  <label for="q17b">7</label><br>
+
+  <input type="radio" id="q17c" name="q17" value="c">
+  <label for="q17c">12</label><br>
+
+  <button type="button" onclick="verifierQ17()">Valider</button>
+</form>
+<p id="resultat17"></p>
+
+<script>
+function verifierQ17() {
+  const reponse = document.querySelector('input[name="q17"]:checked');
+  const resultat = document.getElementById("resultat17");
+
+  if (!reponse) {
+    resultat.textContent = "Veuillez choisir une réponse.";
+    return;
+  }
+
+  if (reponse.value === "b") {
+    resultat.textContent = "✅ Bonne réponse ! Il y a 7 vertèbres cervicales.";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. La bonne réponse est : 7 vertèbres cervicales.";
+  }
+
+  document.querySelectorAll('input[name="q17"]').forEach(r => r.disabled = true);
+  document.querySelector('#q17 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 18 ================= -->
+<h3>18. Comment se notent la première et deuxième vertèbres cervicales ?</h3>
+<form id="q18">
+  <input type="radio" id="q18a" name="q18" value="a">
+  <label for="q18a">C1 = Atlas, C2 = Axis</label><br>
+
+  <input type="radio" id="q18b" name="q18" value="b">
+  <label for="q18b">C1 = Axis, C2 = Atlas</label><br>
+
+  <button type="button" onclick="verifierQ18()">Valider</button>
+</form>
+<p id="resultat18"></p>
+
+<script>
+function verifierQ18() {
+  const reponse = document.querySelector('input[name="q18"]:checked');
+  const resultat = document.getElementById("resultat18");
+
+  if (!reponse) {
+    resultat.textContent = "Veuillez choisir une réponse.";
+    return;
+  }
+
+  if (reponse.value === "a") {
+    resultat.textContent = "✅ Bonne réponse ! C1 = Atlas et C2 = Axis.";
+    score++;
+  } else {
+    resultat.textContent = "❌ Mauvaise réponse. La bonne réponse est : C1 = Atlas, C2 = Axis.";
+  }
+
+  document.querySelectorAll('input[name="q18"]').forEach(r => r.disabled = true);
+  document.querySelector('#q18 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 19 ================= -->
+<h3>19. Quelles lettres sont utilisées pour noter les vertèbres de la colonne ?</h3>
+<form id="q19">
+  <input type="radio" id="q19a" name="q19" value="a">
+  <label for="q19a">C, T, L, S, Co</label><br>
+
+  <input type="radio" id="q19b" name="q19" value="b">
+  <label for="q19b">A, B, C, D, E</label><br>
+
+  <button type="button" onclick="verifierQ19()">Valider</button>
+</form>
+<p id="resultat19"></p>
+
+<script>
+function verifierQ19() {
+  const reponse = document.querySelector('input[name="q19"]:checked');
+  const resultat = document.getElementById("resultat19");
+
+  if (!reponse) { resultat.textContent = "Veuillez choisir une réponse."; return; }
+
+  if (reponse.value === "a") { 
+    resultat.textContent = "✅ Bonne réponse ! C=cervicales, T=thoraciques, L=lombaires, S=sacrées, Co=coccygiennes."; 
+    score++; 
+  } else { 
+    resultat.textContent = "❌ Mauvaise réponse. La bonne réponse est C, T, L, S, Co."; 
+  }
+
+  document.querySelectorAll('input[name="q19"]').forEach(r => r.disabled = true);
+  document.querySelector('#q19 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 20 ================= -->
+<h3>20. A quoi sert le processus articulaire ?</h3>
+<form id="q20">
+  <input type="radio" id="q20a" name="q20" value="a">
+  <label for="q20a">Articulation avec les côtes et les vertèbres voisines</label><br>
+
+  <input type="radio" id="q20b" name="q20" value="b">
+  <label for="q20b">Servir de support pour les muscles abdominaux</label><br>
+
+  <button type="button" onclick="verifierQ20()">Valider</button>
+</form>
+<p id="resultat20"></p>
+
+<script>
+function verifierQ20() {
+  const reponse = document.querySelector('input[name="q20"]:checked');
+  const resultat = document.getElementById("resultat20");
+
+  if (!reponse) { resultat.textContent = "Veuillez choisir une réponse."; return; }
+
+  if (reponse.value === "a") { 
+    resultat.textContent = "✅ Bonne réponse !"; 
+    score++; 
+  } else { 
+    resultat.textContent = "❌ Mauvaise réponse. Le processus articulaire permet l'articulation avec les vertèbres voisines et les côtes."; 
+  }
+
+  document.querySelectorAll('input[name="q20"]').forEach(r => r.disabled = true);
+  document.querySelector('#q20 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 21 ================= -->
+<h3>21. Le processus xiphoïde fait-il partie de la colonne vertébrale ?</h3>
+<form id="q21">
+  <input type="radio" id="q21a" name="q21" value="a">
+  <label for="q21a">Oui</label><br>
+
+  <input type="radio" id="q21b" name="q21" value="b">
+  <label for="q21b">Non</label><br>
+
+  <button type="button" onclick="verifierQ21()">Valider</button>
+</form>
+<p id="resultat21"></p>
+
+<script>
+function verifierQ21() {
+  const reponse = document.querySelector('input[name="q21"]:checked');
+  const resultat = document.getElementById("resultat21");
+
+  if (!reponse) { resultat.textContent = "Veuillez choisir une réponse."; return; }
+
+  if (reponse.value === "b") { 
+    resultat.textContent = "✅ Bonne réponse ! Le processus xiphoïde fait partie du sternum, pas de la colonne vertébrale."; 
+    score++; 
+  } else { 
+    resultat.textContent = "❌ Mauvaise réponse. Le xiphoïde est la partie inférieure du sternum."; 
+  }
+
+  document.querySelectorAll('input[name="q21"]').forEach(r => r.disabled = true);
+  document.querySelector('#q21 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 22 ================= -->
+<h3>22. Combien de courbures possède la colonne vertébrale ?</h3>
+<form id="q22">
+  <input type="radio" id="q22a" name="q22" value="a">
+  <label for="q22a">2</label><br>
+
+  <input type="radio" id="q22b" name="q22" value="b">
+  <label for="q22b">4</label><br>
+
+  <button type="button" onclick="verifierQ22()">Valider</button>
+</form>
+<p id="resultat22"></p>
+
+<script>
+function verifierQ22() {
+  const reponse = document.querySelector('input[name="q22"]:checked');
+  const resultat = document.getElementById("resultat22");
+
+  if (!reponse) { resultat.textContent = "Veuillez choisir une réponse."; return; }
+
+  if (reponse.value === "b") { 
+    resultat.textContent = "✅ Bonne réponse ! 4 courbures: cervicale, thoracique, lombaire, sacrée."; 
+    score++; 
+  } else { 
+    resultat.textContent = "❌ Mauvaise réponse. La colonne vertébrale a 4 courbures."; 
+  }
+
+  document.querySelectorAll('input[name="q22"]').forEach(r => r.disabled = true);
+  document.querySelector('#q22 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 23 ================= -->
+<h3>23. Qu'est-ce qu'un ligament ?</h3>
+<form id="q23">
+  <input type="radio" id="q23a" name="q23" value="a">
+  <label for="q23a">Faisceau de fibres reliant les os entre eux ou aux muscles</label><br>
+
+  <input type="radio" id="q23b" name="q23" value="b">
+  <label for="q23b">Petit os mobile dans le cou</label><br>
+
+  <button type="button" onclick="verifierQ23()">Valider</button>
+</form>
+<p id="resultat23"></p>
+
+<script>
+function verifierQ23() {
+  const reponse = document.querySelector('input[name="q23"]:checked');
+  const resultat = document.getElementById("resultat23");
+
+  if (!reponse) { resultat.textContent = "Veuillez choisir une réponse."; return; }
+
+  if (reponse.value === "a") { 
+    resultat.textContent = "✅ Bonne réponse !"; 
+    score++; 
+  } else { 
+    resultat.textContent = "❌ Mauvaise réponse. Un ligament est un faisceau de fibres reliant les os ou aux muscles."; 
+  }
+
+  document.querySelectorAll('input[name="q23"]').forEach(r => r.disabled = true);
+  document.querySelector('#q23 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 24 ================= -->
+<h3>24. Lequel ne fait pas partie de la colonne ?</h3>
+<form id="q24">
+  <input type="checkbox" id="q24a" name="q24" value="jaune">
+  <label for="q24a">Ligament jaune</label><br>
+
+  <input type="checkbox" id="q24b" name="q24" value="interepineux">
+  <label for="q24b">Ligament interépineux</label><br>
+
+  <input type="checkbox" id="q24c" name="q24" value="longpost">
+  <label for="q24c">Ligament longitudinal postérieur</label><br>
+
+  <input type="checkbox" id="q24d" name="q24" value="noncolonne">
+  <label for="q24d">Ligament n'appartenant pas à la colonne</label><br>
+
+  <button type="button" onclick="verifierQ24()">Valider</button>
+</form>
+<p id="resultat24"></p>
+
+<script>
+function verifierQ24() {
+  const coches = document.querySelectorAll('input[name="q24"]:checked');
+  const valeurs = Array.from(coches).map(c => c.value);
+  const bonnesReponses = ["noncolonne"];
+  const resultat = document.getElementById("resultat24");
+
+  const correct = valeurs.length === bonnesReponses.length && bonnesReponses.every(v => valeurs.includes(v));
+
+  if (correct) { 
+    resultat.textContent = "✅ Bonne réponse !"; 
+    score++; 
+  } else { 
+    resultat.textContent = "❌ Mauvaise réponse. Le ligament qui ne fait pas partie de la colonne doit être sélectionné."; 
+  }
+
+  document.querySelectorAll('input[name="q24"]').forEach(c => c.disabled = true);
+  document.querySelector('#q24 button').disabled = true;
+}
+</script>
+
+<!-- ================= QUESTION 25 ================= -->
+<h3>25. Qu'est-ce qu'une scoliose ?</h3>
+<form id="q25">
+  <input type="radio" id="q25a" name="q25" value="a">
+  <label for="q25a">Déviation latérale de la colonne vertébrale</label><br>
+
+  <input type="radio" id="q25b" name="q25" value="b">
+  <label for="q25b">Courbure normale de la colonne</label><br>
+
+  <button type="button" onclick="verifierQ25()">Valider</button>
+</form>
+<p id="resultat25"></p>
+
+<script>
+function verifierQ25() {
+  const reponse = document.querySelector('input[name="q25"]:checked');
+  const resultat = document.getElementById("resultat25");
+  if (!reponse) { resultat.textContent="Veuillez choisir une réponse."; return; }
+  if (reponse.value==="a") { resultat.textContent="✅ Bonne réponse !"; score++; } 
+  else { resultat.textContent="❌ Mauvaise réponse. Une scoliose est une déviation latérale de la colonne."; }
+  document.querySelectorAll('input[name="q25"]').forEach(r=>r.disabled=true);
+  document.querySelector('#q25 button').disabled=true;
+}
+</script>
+
+<!-- ================= QUESTION 26 ================= -->
+<h3>26. La cage thoracique protège quels organes ?</h3>
+<form id="q26">
+  <input type="checkbox" id="q26a" name="q26" value="coeur">
+  <label for="q26a">Cœur</label><br>
+
+  <input type="checkbox" id="q26b" name="q26" value="poumons">
+  <label for="q26b">Poumons</label><br>
+
+  <input type="checkbox" id="q26c" name="q26" value="foie">
+  <label for="q26c">Foie</label><br>
+
+  <button type="button" onclick="verifierQ26()">Valider</button>
+</form>
+<p id="resultat26"></p>
+
+<script>
+function verifierQ26() {
+  const coches = document.querySelectorAll('input[name="q26"]:checked');
+  const valeurs = Array.from(coches).map(c=>c.value);
+  const bonnesReponses=["coeur","poumons"];
+  const resultat=document.getElementById("resultat26");
+  const correct = valeurs.length===bonnesReponses.length && bonnesReponses.every(v=>valeurs.includes(v));
+  if(correct){ resultat.textContent="✅ Bonne réponse !"; score++; } 
+  else { resultat.textContent="❌ Mauvaise réponse. La cage thoracique protège le cœur et les poumons."; }
+  document.querySelectorAll('input[name="q26"]').forEach(c=>c.disabled=true);
+  document.querySelector('#q26 button').disabled=true;
+}
+</script>
+
+<!-- ================= QUESTION 27 ================= -->
+<h3>27. Quels os font partie de la cage thoracique ?</h3>
+<form id="q27">
+  <input type="checkbox" id="q27a" name="q27" value="sternum">
+  <label for="q27a">Sternum</label><br>
+
+  <input type="checkbox" id="q27b" name="q27" value="cotes">
+  <label for="q27b">Côtes</label><br>
+
+  <input type="checkbox" id="q27c" name="q27" value="clavicules">
+  <label for="q27c">Clavicules</label><br>
+
+  <button type="button" onclick="verifierQ27()">Valider</button>
+</form>
+<p id="resultat27"></p>
+
+<script>
+function verifierQ27() {
+  const coches=document.querySelectorAll('input[name="q27"]:checked');
+  const valeurs=Array.from(coches).map(c=>c.value);
+  const bonnesReponses=["sternum","cotes"];
+  const resultat=document.getElementById("resultat27");
+  const correct = valeurs.length===bonnesReponses.length && bonnesReponses.every(v=>valeurs.includes(v));
+  if(correct){ resultat.textContent="✅ Bonne réponse !"; score++; }
+  else{ resultat.textContent="❌ Mauvaise réponse. La cage thoracique est constituée du sternum et des côtes."; }
+  document.querySelectorAll('input[name="q27"]').forEach(c=>c.disabled=true);
+  document.querySelector('#q27 button').disabled=true;
+}
+</script>
+
+<!-- ================= QUESTION 28 ================= -->
+<h3>28. Le sternum est attaché à :</h3>
+<form id="q28">
+  <input type="radio" id="q28a" name="q28" value="a">
+  <label for="q28a">Clavicule</label><br>
+
+  <input type="radio" id="q28b" name="q28" value="b">
+  <label for="q28b">Scapula</label><br>
+
+  <button type="button" onclick="verifierQ28()">Valider</button>
+</form>
+<p id="resultat28"></p>
+
+<script>
+function verifierQ28() {
+  const reponse=document.querySelector('input[name="q28"]:checked');
+  const resultat=document.getElementById("resultat28");
+  if(!reponse){ resultat.textContent="Veuillez choisir une réponse."; return; }
+  if(reponse.value==="a"){ resultat.textContent="✅ Bonne réponse !"; score++; }
+  else{ resultat.textContent="❌ Mauvaise réponse. Le sternum est attaché aux clavicules."; }
+  document.querySelectorAll('input[name="q28"]').forEach(r=>r.disabled=true);
+  document.querySelector('#q28 button').disabled=true;
+}
+</script>
+
+<!-- ================= QUESTION 29 ================= -->
+<h3>29. Combien y a-t-il de côtes ?</h3>
+<form id="q29">
+  <input type="radio" id="q29a" name="q29" value="a">
+  <label for="q29a">12 paires</label><br>
+
+  <input type="radio" id="q29b" name="q29" value="b">
+  <label for="q29b">24 paires</label><br>
+
+  <button type="button" onclick="verifierQ29()">Valider</button>
+</form>
+<p id="resultat29"></p>
+
+<script>
+function verifierQ29() {
+  const reponse=document.querySelector('input[name="q29"]:checked');
+  const resultat=document.getElementById("resultat29");
+  if(!reponse){ resultat.textContent="Veuillez choisir une réponse."; return; }
+  if(reponse.value==="a"){ resultat.textContent="✅ Bonne réponse !"; score++; }
+  else{ resultat.textContent="❌ Mauvaise réponse. Il y a 12 paires de côtes."; }
+  document.querySelectorAll('input[name="q29"]').forEach(r=>r.disabled=true);
+  document.querySelector('#q29 button').disabled=true;
+}
+</script>
+
+<!-- ================= QUESTION 30 ================= -->
+<h3>30. La costochondrite est une inflammation de :</h3>
+<form id="q30">
+  <input type="radio" id="q30a" name="q30" value="a">
+  <label for="q30a">Cartilages costaux</label><br>
+
+  <input type="radio" id="q30b" name="q30" value="b">
+  <label for="q30b">Os du bras</label><br>
+
+  <button type="button" onclick="verifierQ30()">Valider</button>
+</form>
+<p id="resultat30"></p>
+
+<script>
+function verifierQ30() {
+  const reponse=document.querySelector('input[name="q30"]:checked');
+  const resultat=document.getElementById("resultat30");
+  if(!reponse){ resultat.textContent="Veuillez choisir une réponse."; return; }
+  if(reponse.value==="a"){ resultat.textContent="✅ Bonne réponse !"; score++; }
+  else{ resultat.textContent="❌ Mauvaise réponse. La costochondrite est l'inflammation des cartilages costaux."; }
+  document.querySelectorAll('input[name="q30"]').forEach(r=>r.disabled=true);
+  document.querySelector('#q30 button').disabled=true;
+
+  // Afficher le score final après la dernière question
+  document.getElementById("scoreFinal").textContent = "Votre score final est : " + score + " / 30";
+}
+</script>
+
+<!-- ================= SCORE FINAL ================= -->
+<h2 id="scoreFinal"></h2>
+
